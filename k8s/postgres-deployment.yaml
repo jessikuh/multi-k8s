@@ -25,3 +25,6 @@ spec:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
               subPath: postgres # this is additional for postgres, creating a subfolder where you can save data
+          env:
+            - name: POSTGRES_HOST_AUTH_METHOD
+              value: "trust"
