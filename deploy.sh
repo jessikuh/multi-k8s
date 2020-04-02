@@ -8,11 +8,11 @@ docker push jessikuh/multi-work:latest
 
 docker push jessikuh/multi-client:$SHA
 docker push jessikuh/multi-server:$SHA
-docker push jessikuh/multi-work:$SHA
+docker push jessikuh/multi-worker:$SHA
 
 # APPLY A SPECIFIC HASH IN ORDER FOR K8S TO KNOW DOCKERFILE HAS UPDATED
 # OTHERWISE WILL CHOOSE LATEST AND THINK THERE'S NO UPDATE
 kubectl apply -f k8s
-kubectl set image deployments/client-deployment server=jessikuh/multi-client:$SHA
+kubectl set image deployments/client-deployment client=jessikuh/multi-client:$SHA
 kubectl set image deployments/server-deployment server=jessikuh/multi-server:$SHA
-kubectl set image deployments/worker-deployment server=jessikuh/multi-worker:$SHA
+kubectl set image deployments/worker-deployment worker=jessikuh/multi-worker:$SHA
